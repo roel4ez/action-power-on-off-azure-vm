@@ -1,0 +1,15 @@
+name: Test workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      vm-name:
+        required: true
+        type: string
+        description: 'the name of the vm to be turned on'
+
+jobs:
+  call-workflow:
+    uses: roel4ez/action-power-on-off-azure-vm/.github/workflows/power-on-azure-vm.yml@main
+    with:
+      AZURE_VM_NAME: ${{ inputs.vm-name }}
