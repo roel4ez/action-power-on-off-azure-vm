@@ -26,4 +26,4 @@ jobs:
           az login --service-principal -u ${{ secrets.AZURE_SP_CLIENTID }} --p ${{ secrets.AZURE_SP_SECRET }} --tenant ${{ secrets.AZURE_TENANTID }}
       - name: "Start VM"
         run: | 
-          az vm start --name ${{ inputs.AZURE_VM_NAME }} --resource-group ${{ AZURE_RG_NAME }} --no-wait 
+          az vm start --name ${{ inputs.AZURE_VM_NAME }} --resource-group ${{ inputs.AZURE_RG_NAME }} --no-wait 
