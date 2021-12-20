@@ -1,4 +1,4 @@
-name: Test workflow
+name: Main Test workflow
 
 on:
   workflow_dispatch:
@@ -12,4 +12,4 @@ jobs:
   call-workflow:
     uses: roel4ez/action-power-on-off-azure-vm/.github/workflows/power-on-azure-vm.yml@main
     with:
-      AZURE_VM_NAME: ${{ inputs.vm-name }}
+      AZURE_VM_NAME: ${{ github.event.inputs.vm-name }}
