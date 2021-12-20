@@ -1,0 +1,24 @@
+name: Power OFF workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      vm_name:
+        required: true
+        type: string
+        description: 'the name of the vm to be turned on'
+      rg_name:
+        required: true
+        type: string
+        description: 'the name of the resource-group the VM belongs to'
+
+jobs:
+  call-workflow:
+    uses: roel4ez/action-power-on-off-azure-vm/.github/workflows/power-off-azure-vm.yml@main
+    with:
+      AZURE_VM_NAME: ${{ github.event.inputs.vm_name }}
+      AZURE_RG_NAME: ${{ github.event.inputs.rg_name }}
+    secrets:
+      AZURE_SP_CLIENTID: ${{ secrets.AZURE_SP_CLIENTID }}
+      AZURE_SP_SECRET: ${{ secrets.AZURE_SP_SECRET }}
+      AZURE_TENANTID: ${{ secrets.AZURE_TENANTID }}
