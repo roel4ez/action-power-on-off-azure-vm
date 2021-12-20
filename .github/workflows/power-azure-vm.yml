@@ -1,22 +1,15 @@
-name: Set Azure VM on/off
+name: Set Azure VM on
 
 on:
   workflow_call:
-    inputs:
-      azure-vm-id:
-        required: true
-        type: string
-      power:
-        required: true
-        type: boolean
-    secrets:
-      SP_NAME:
-        required: true
-      SP_KEY:
-        required: true
         
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
-      - uses: 
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - run: |
+          az vm start --name ${{ secrets.AZURE_VM_NAME }} --no-wait 
