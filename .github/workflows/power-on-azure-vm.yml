@@ -6,6 +6,13 @@ on:
       AZURE_VM_NAME:
         required: true
         type: string
+    secrets:
+      AZURE_SP_CLIENTID:
+        required: true
+      AZURE_SP_SECRET:
+        required: true
+      AZURE_TENANTID:
+        required: true
         
 jobs:
   reusable_workflow_job:
@@ -18,4 +25,4 @@ jobs:
 
       - run: |
           az login --service-principal -u ${{ secrets.AZURE_SP_CLIENTID }} --p ${{ secrets.AZURE_SP_SECRET }} --tenant ${{ secrets.AZURE_TENANTID }}  |
-          az vm start --name ${{ github.event.inputs.AZURE_VM_NAME }} --no-wait 
+          az vm start --name ${{ inputs.AZURE_VM_NAME }} --no-wait 
