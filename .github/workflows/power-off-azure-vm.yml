@@ -1,5 +1,5 @@
 name: Set Azure VM off
-descript ion: Deallocates an Azure VM
+
 on:
   workflow_call:
     inputs:
@@ -18,7 +18,7 @@ on:
         required: true
         
 jobs:
-  start_azure_vm:
+  deallocate_azure_vm:
     runs-on: ubuntu-latest
     steps:
       - name: "Login with az CLI"
