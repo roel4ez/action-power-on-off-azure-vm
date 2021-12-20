@@ -24,6 +24,6 @@ jobs:
       - name: "Login with az CLI"
         run: |
           az login --service-principal -u ${{ secrets.AZURE_SP_CLIENTID }} --p ${{ secrets.AZURE_SP_SECRET }} --tenant ${{ secrets.AZURE_TENANTID }}
-      - name: "Start VM"
+      - name: "Deallocate VM"
         run: | 
           az vm deallocate --name ${{ inputs.AZURE_VM_NAME }} --resource-group ${{ inputs.AZURE_RG_NAME }} --no-wait 
