@@ -6,7 +6,7 @@ on:
       vm_name:
         required: true
         type: string
-        description: 'the name of the vm to be turned on'
+        description: 'the name of the vm'
       rg_name:
         required: true
         type: string
