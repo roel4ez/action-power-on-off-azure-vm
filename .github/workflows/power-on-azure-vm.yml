@@ -16,4 +16,4 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - run: |
-          az vm start --name ${{ secrets.AZURE_VM_NAME }} --no-wait 
+          az vm start --name ${{ github.event.inputs.AZURE_VM_NAME }} --no-wait 
