@@ -2,6 +2,10 @@ name: Set Azure VM on
 
 on:
   workflow_call:
+    inputs:
+      AZURE_VM_NAME:
+        required: true
+        type: string
         
 jobs:
   reusable_workflow_job:
