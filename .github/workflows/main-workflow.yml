@@ -1,4 +1,4 @@
-name: Main Test workflow
+name: Power ON workflow
 
 on:
   workflow_dispatch:
