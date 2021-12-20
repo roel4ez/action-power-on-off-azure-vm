@@ -1,4 +1,4 @@
-name: Power ON/OFF workflow
+name: FULL workflow
 
 on:
   workflow_dispatch:
