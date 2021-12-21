@@ -5,7 +5,7 @@ on:
     inputs:
       POWER:
         required: true
-        type: string
+        type: boolean
       AZURE_VM_NAME:
         required: true
         type: string
@@ -29,11 +29,11 @@ jobs:
           az login --service-principal -u ${{ secrets.AZURE_SP_CLIENTID }} --p ${{ secrets.AZURE_SP_SECRET }} --tenant ${{ secrets.AZURE_TENANTID }}
       
       - name: "Deallocate VM"
-        if: ${{ inputs.POWER == 'OFF' }}
+        if: ${{ inputs.POWER == false }}
         run: | 
           az vm deallocate --name ${{ inputs.AZURE_VM_NAME }} --resource-group ${{ inputs.AZURE_RG_NAME }} --no-wait 
 
       - name: "Start VM"
-        if: ${{ inputs.POWER == 'ON' }}
+        if: ${{ inputs.POWER == true }}
         run: | 
           az vm start --name ${{ inputs.AZURE_VM_NAME }} --resource-group ${{ inputs.AZURE_RG_NAME }} --no-wait 
