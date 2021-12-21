@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Power Azure VM
-        uses: roel4ez/power-azure-vm@main
+        uses: .github/workflows/composite/power-azure-vm
         with:
           AZURE_VM_NAME: ${{ github.event.inputs.vm_name }}
           AZURE_RG_NAME: ${{ github.event.inputs.rg_name }}
