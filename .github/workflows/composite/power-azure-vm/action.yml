@@ -31,7 +31,7 @@ runs:
     - name: "Login with az CLI"
       shell: bash
       run: |
-        az login --service-principal -u ${{ inputs.AZURE_SP_CLIENTID }} -p ${{ inputs.AZURE_SP_SECRET }} --tenant ${{ inputs.AZURE_TENANTID }}
+        az login --service-principal -u ${{ inputs.AZURE_SP_CLIENTID }} -p ${{ inputs.AZURE_SP_SECRET }} --tenant 72f988bf-86f1-41af-91ab-2d7cd011db47
     
     - name: 'Debug POWER'
       shell: bash
