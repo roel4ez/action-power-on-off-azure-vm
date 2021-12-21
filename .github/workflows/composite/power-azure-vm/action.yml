@@ -36,7 +36,7 @@ runs:
     - name: 'Debug POWER'
       shell: bash
       run: |
-        echo POWER_SWITCH
+        echo ${{ inputs.POWER_SWITCH }}
 
     - name: "Deallocate VM"
       shell: bash
