@@ -23,7 +23,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: roel4ez/action-power-on-off-azure-vm/.github/workflows/power-on-azure-vm.yml@main
+    uses: roel4ez/action-power-on-off-azure-vm/.github/workflows/power-vm-azure.yml@main
     with:
       AZURE_VM_NAME: ${{ github.events.input.vm_name }}
       AZURE_RG_NAME: ${{ github.events.input.rg_name }}
