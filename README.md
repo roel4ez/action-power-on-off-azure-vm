@@ -17,8 +17,6 @@ The action requires 6 different parameters:
 - `AZURE_SP_SECRET`: The secret of the ServicePrincipal
 - `AZURE_TENANTID`: TenantID where the ServicePrincipal belongs to.
 
-
-
 ## Example
 
 See the [main-flow.yml](.github/workflows/main-flow.yml) for an example on how
