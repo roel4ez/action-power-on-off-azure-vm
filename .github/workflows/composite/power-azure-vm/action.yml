@@ -9,6 +9,7 @@ inputs:
   POWER_SWITCH:
     description: 'Turn ON or OFF the VM'
     required: true
+    type: boolean
   AZURE_VM_NAME:
     description: 'Name of the VM'
     required: true
