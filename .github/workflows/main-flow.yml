@@ -23,10 +23,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Power Azure VM
         uses: ./.github/workflows/composite/power-azure-vm
         with:
           AZURE_VM_NAME: ${{ github.event.inputs.vm_name }}
           AZURE_RG_NAME: ${{ github.event.inputs.rg_name }}
-          POWER: ${{ github.event.inputs.power }}
+          POWER_SWITCH: ${{ github.event.inputs.power }}
+          AZURE_SP_CLIENTID: $${{ secrets.AZURE_SP_CLIENTID }}
+          AZURE_SP_SECRET: $${{ secrets.AZURE_SP_SECRET }}
+          AZURE_SP_TENANTID: $${{ secrets.AZURE_SP_TENANTID }}
