@@ -5,10 +5,7 @@ on:
     inputs:
       POWER:
         required: true
-        type: choice
-        options:
-          - ON
-          - OFF
+        type: string
       AZURE_VM_NAME:
         required: true
         type: string

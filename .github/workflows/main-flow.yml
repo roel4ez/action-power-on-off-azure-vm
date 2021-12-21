@@ -8,23 +8,26 @@ on:
         description: 'Turn the VM ON or OFF'
         type: choice
         options:
-          - ON
-          - OFF
+          - 'ON'
+          - 'OFF'
       vm_name:
-        required: false
-        type: string
         description: 'the name of the vm to be turned on'
+        required: true 
+        default: 'vm-test-gh-action'
+        type: string
       rg_name:
         required: false
         type: string
+        default: 'vm-test'
         description: 'the name of the resource-group the VM belongs to'
 
 jobs:
   call-workflow:
     uses: roel4ez/action-power-on-off-azure-vm/.github/workflows/power-on-azure-vm.yml@main
     with:
-      AZURE_VM_NAME: vm-test-gh-action
-      AZURE_RG_NAME: vm-test
+      AZURE_VM_NAME: ${{ github.events.input.vm_name }}
+      AZURE_RG_NAME: ${{ github.events.input.rg_name }}
+      POWER: ${{ github.events.input.power }}
     secrets:
       AZURE_SP_CLIENTID: ${{ secrets.AZURE_SP_CLIENTID }}
       AZURE_SP_SECRET: ${{ secrets.AZURE_SP_SECRET }}
