@@ -22,6 +22,8 @@ jobs:
   power_azure_vm:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      
       - name: Power Azure VM
         uses: ./.github/workflows/composite/power-azure-vm
         with:
