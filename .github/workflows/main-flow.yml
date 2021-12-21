@@ -6,7 +6,11 @@ on:
       power:
         required: true
         description: 'Turn the VM ON or OFF'
-        type: boolean
+        type: choice
+        options:
+          - 'ON'
+          - 'OFF'
+          - 'DEALLOCATE'
       vm_name:
         description: 'the name of the vm to be turned on'
         required: true 

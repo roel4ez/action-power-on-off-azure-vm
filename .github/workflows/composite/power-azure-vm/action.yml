@@ -1,5 +1,5 @@
-name: 'Power ON or DEALLOCATE a specific Azure VM'
-description: 'This action either powers on or powers off (deallocates) a specific Azure VM'
+name: 'Power ON/OFF or DEALLOCATE a specific Azure VM'
+description: 'This action either powers on/off or deallocates a specific Azure VM'
 
 branding:
   icon: download
@@ -7,9 +7,9 @@ branding:
 
 inputs:
   POWER_SWITCH:
-    description: 'Turn ON or OFF the VM'
+    description: 'Turn ON or OFF the VM, or DEALLOCATE'
     required: true
-    type: boolean
+    type: string
   AZURE_VM_NAME:
     description: 'Name of the VM'
     required: true
@@ -41,12 +41,18 @@ runs:
 
     - name: "Deallocate VM"
       shell: bash
-      if: ${{ !inputs.POWER_SWITCH }}
+      if: ${{ inputs.POWER_SWITCH == 'DEALLOCATE' }}
       run: | 
         az vm deallocate --name ${{ inputs.AZURE_VM_NAME }} --resource-group ${{ inputs.AZURE_RG_NAME }} --no-wait 
 
+    - name: "Stop VM"
+      shell: bash
+      if: ${{ inputs.POWER_SWITCH == 'OFF' }}
+      run: | 
+        az vm stop --name ${{ inputs.AZURE_VM_NAME }} --resource-group ${{ inputs.AZURE_RG_NAME }} --no-wait 
+
     - name: "Start VM"
       shell: bash
-      if: ${{ inputs.POWER_SWITCH }}
+      if: ${{ inputs.POWER_SWITCH == 'ON' }}
       run: | 
         az vm start --name ${{ inputs.AZURE_VM_NAME }} --resource-group ${{ inputs.AZURE_RG_NAME }} --no-wait 
