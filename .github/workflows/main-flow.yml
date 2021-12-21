@@ -5,7 +5,7 @@ on:
     inputs:
       power:
         required: true
-        description: 'Turn the VM ON or OFF'
+        description: 'Turn the VM ON'
         type: boolean
       vm_name:
         description: 'the name of the vm to be turned on'
