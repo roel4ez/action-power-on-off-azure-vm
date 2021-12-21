@@ -29,23 +29,23 @@ runs:
   using: "composite"
   steps:
     - name: "Login with az CLI"
-      shell: pwsh
+      shell: bash
       run: |
-        az login --service-principal -u ${{ inputs.AZURE_SP_CLIENTID }} -p ${{ inputs.AZURE_SP_SECRET }} --tenant 72f988bf-86f1-41af-91ab-2d7cd011db47
+        az login --service-principal -u ${{ inputs.AZURE_SP_CLIENTID }} -p ${{ inputs.AZURE_SP_SECRET }} --tenant ${{ inputs.AZURE_TENANTID }}
     
     - name: 'Debug POWER'
-      shell: pwsh
+      shell: bash
       run: |
         echo POWER_SWITCH
 
     - name: "Deallocate VM"
-      shell: pwsh
+      shell: bash
       if: ${{ inputs.POWER_SWITCH == 0 }}
       run: | 
         az vm deallocate --name ${{ inputs.AZURE_VM_NAME }} --resource-group ${{ inputs.AZURE_RG_NAME }} --no-wait 
 
     - name: "Start VM"
-      shell: pwsh
+      shell: bash
       if: ${{ inputs.POWER_SWITCH == 4 }}
       run: | 
         az vm start --name ${{ inputs.AZURE_VM_NAME }} --resource-group ${{ inputs.AZURE_RG_NAME }} --no-wait 
